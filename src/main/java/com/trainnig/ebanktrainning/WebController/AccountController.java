@@ -1,6 +1,7 @@
 package com.trainnig.ebanktrainning.WebController;
 
 import com.trainnig.ebanktrainning.Entities.BankAccount;
+import com.trainnig.ebanktrainning.Mappers.AccountMappers;
 import com.trainnig.ebanktrainning.Service.AccountService;
 import com.trainnig.ebanktrainning.dto.BankAccountRequestDto;
 import com.trainnig.ebanktrainning.dto.BankAccountResponseDTO;
@@ -16,11 +17,14 @@ public class AccountController {
 
     private BankAccountRepository bankAccountRepository;
     private AccountService accountService;
+    // private AccountMappers accountMappers;
 
     public AccountController(BankAccountRepository bankAccountRepository, 
-                            AccountService accountService) {
+                            AccountService accountService
+                            ) {
         this.bankAccountRepository = bankAccountRepository;
         this.accountService = accountService;
+        // this.accountMappers=accountMappers;
     }
 
     @GetMapping("/bankAccounts")
