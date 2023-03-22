@@ -26,8 +26,8 @@ public class EbankTrainningApplication {
                         .id(UUID.randomUUID().toString())
                         .balance(1000*Math.random()*100)
                         .createdAt(new Date())
-                        .Currency("Fcfa")
-                        .Type((Math.random()>0.5)? AccountType.CURRENTACCOUNT:AccountType.SAVINGACCOUNT)
+                        .currency("Fcfa")
+                        .type((Math.random()>0.5)? AccountType.CURRENTACCOUNT:AccountType.SAVINGACCOUNT)
                         .build();
                 bankAccountRepository.save(bankAccount);
             }

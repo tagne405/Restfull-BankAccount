@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class BankAccountRequestDto {
+    //pour cree un compte j'envoie juste 
     private Double balance;
     private String Currency;
     private AccountType Type;

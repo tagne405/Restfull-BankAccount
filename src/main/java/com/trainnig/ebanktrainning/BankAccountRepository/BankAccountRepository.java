@@ -12,6 +12,8 @@ import java.util.List;
 @RepositoryRestController
 public interface BankAccountRepository extends JpaRepository<BankAccount, String> {
     
-    // @RestResource(path="/bytype")
-     List<BankAccount> findByType(AccountType type);
+    @RestResource(path="/bytype")
+     List<BankAccount> findByType(@Param("t") AccountType type);
+    @RestResource(path = "/byCurrency")
+     List<BankAccount> findByCurrency(@Param("c") String currency);
 }

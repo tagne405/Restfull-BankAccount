@@ -1,21 +1,26 @@
 package com.trainnig.ebanktrainning.WebController;
 
 import com.trainnig.ebanktrainning.Entities.BankAccount;
+import com.trainnig.ebanktrainning.Service.AccountService;
+import com.trainnig.ebanktrainning.dto.BankAccountRequestDto;
+import com.trainnig.ebanktrainning.dto.BankAccountResponseDTO;
 import com.trainnig.ebanktrainning.BankAccountRepository.BankAccountRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
 public class AccountController {
 
     private BankAccountRepository bankAccountRepository;
+    private AccountService accountService;
 
-    public AccountController(BankAccountRepository bankAccountRepository) {
+    public AccountController(BankAccountRepository bankAccountRepository, 
+                            AccountService accountService) {
         this.bankAccountRepository = bankAccountRepository;
+        this.accountService = accountService;
     }
 
     @GetMapping("/bankAccounts")
@@ -29,9 +34,8 @@ public class AccountController {
     }
 
     @PostMapping("/bankAccounts")
-    public BankAccount insert(@RequestBody BankAccount bankAccount){
-        if(bankAccount.getId()==null) bankAccount.setId(UUID.randomUUID().toString());
-        return bankAccountRepository.save(bankAccount);
+    public BankAccountResponseDTO insert(@RequestBody BankAccountRequestDto bankAccountRequestDto){
+        return accountService.addAccount(bankAccountRequestDto);
     }
     
     @PutMapping("/bankAccounts/{id}")
